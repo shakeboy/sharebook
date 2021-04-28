@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.UBookMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.UBook">
+        <result column="ubook_id" jdbcType="INTEGER" property="ubook_id"/>
+        <result column="ubook_name" jdbcType="VARCHAR" property="ubook_name"/>
+        <result column="ubook_description" jdbcType="VARCHAR" property="ubook_description"/>
+        <result column="ubook_image" jdbcType="VARCHAR" property="ubook_image"/>
+        <result column="ubook_content" jdbcType="VARCHAR" property="ubook_content"/>
+        <result column="ubook_good" jdbcType="INTEGER" property="ubook_good"/>
+        <result column="ubook_comment" jdbcType="INTEGER" property="ubook_comment"/>
+        <result column="ubook_transfer" jdbcType="INTEGER" property="ubook_transfer"/>
+    </resultMap>
+
+    <select id="getAllUBook" resultType="com.shakeboy.pojo.UBook">
+        select * from ubooks
+    </select>
+
+</mapper>

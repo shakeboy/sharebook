@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员用户</title>
+    <link rel="stylesheet" href="./../layui/css/layui.css" th:href="@{./../layui/css/layui.css}" media="all">
+    <script src="./../layui/layui.js" th:src="@{./../layui/layui.js}"></script>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script type="text/javascript">
+        window.onload = function (e) {
+            // 1.数据渲染
+            $.get("/user/getAdminUser", function (data) {
+                let json = $.parseJSON(data) // 转成JSON对象
+                console.log(json)
+                console.log(json[1]);
+                let user_body = document.getElementsByClassName("user_body")[0];
+                for (let i = 0; i < json.length; i++) {
+                    let element = document.createElement("tr");
+                    let user_id = json[i]["user_id"];
+                    let user_account = json[i]["user_account"];
+                    let user_avator = json[i]["user_avator"];
+                    let user_name = json[i]["user_name"];
+                    let user_password = json[i]["user_password"];
+                    let user_signature = json[i]["user_signature"];
+                    let user_role = json[i]["user_role"];
+                    element.innerHTML = "<td>" + user_id + "</td>\n" +
+                        "        <td>" + user_account + "</td>\n" +
+                        "        <td>" + user_avator + "</td>\n" +
+                        "        <td>" + user_name + "</td>\n" +
+                        "        <td>" + user_password + "</td>\n" +
+                        "        <td>" + user_signature + "</td>\n" +
+                        "        <td>" + user_role + "</td>"
+                    console.log(element)
+                    user_body.appendChild(element);
+                }
+                // 2.分页功能
+                layui.use('laypage', function(){
+                    let laypage = layui.laypage;
+
+                    //执行一个laypage实例
+                    //完整功能
+                    laypage.render({
+                        elem: 'test1'
+                        ,count:json.length
+                        ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                        ,jump: function(obj){
+                            // 先清空user_body里面的内容
+                            user_body.innerHTML='';
+                            // 模拟渲染 obj.curr为当前选中的页数，即是要渲染的
+                            for (let i = (obj.curr-1)*10; i < obj.curr*10 && i < json.length; i++) {
+                                let element = document.createElement("tr");
+                                let user_id = json[i]["user_id"];
+                                let user_account = json[i]["user_account"];
+                                let user_avator = json[i]["user_avator"];
+                                let user_name = json[i]["user_name"];
+                                let user_password = json[i]["user_password"];
+                                let user_signature = json[i]["user_signature"];
+                                let user_role = json[i]["user_role"];
+                                element.innerHTML = "<td>" + user_id + "</td>\n" +
+                                    "        <td>" + user_account + "</td>\n" +
+                                    "        <td>" + user_avator + "</td>\n" +
+                                    "        <td>" + user_name + "</td>\n" +
+                                    "        <td>" + user_password + "</td>\n" +
+                                    "        <td>" + user_signature + "</td>\n" +
+                                    "        <td>" + user_role + "</td>"
+                                console.log(element)
+                                user_body.appendChild(element);
+                            }
+                        }
+                    });
+                });
+            })
+
+        }
+    </script>
+    <style>
+        /*普通用户界面设置*/
+        #common_title {
+            line-height: 40px;
+            background-color: #9F9F9F;
+            font-size: 30px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="common_title">特权用户管理界面</div>
+<table class="layui-table" lay-even lay-skin="row">
+    <thead>
+    <tr>
+        <th id="user_id">用户编号</th>
+        <th id="user_account">用户账号</th>
+        <th id="user_avator">用户头像</th>
+        <th id="user_name">用户名称</th>
+        <th id="user_password">用户密码</th>
+        <th id="user_signature">用户签名</th>
+        <th id="user_role">用户角色</th>
+    </tr>
+    </thead>
+    <tbody class="user_body">
+    </tbody>
+</table>
+<div id="test1"></div>
+</body>
+<script>
+
+</script>
+</html>

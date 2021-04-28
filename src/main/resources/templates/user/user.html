@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="./../layui/css/layui.css" th:href="@{./../layui/css/layui.css}" media="all">
+    <script src="./../layui/layui.js" th:src="@{./../layui/layui.js}"></script>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script>
+        let user_id = localStorage.getItem("user_id");
+        let user_name = localStorage.getItem("user_name");
+        window.onload=function (e) {
+            document.getElementById("user_id").innerText=user_id;
+            document.getElementById("user_name").innerText=user_name;
+        }
+        function updateNameById() {
+            let value = document.getElementById("update_name").value;//修改后的用户名称
+            console.log(value)
+            let url_update="/user/updateNameById?user_id="+user_id+"&user_name="+value
+            $.get(url_update,function(data){
+                console.log(data)
+                if(data==="true"){
+                    alert("修改成功")
+                }else {
+                    alert("修改失败,该用户不存在")
+                }
+            })
+        }
+        function deleteUserById() {
+            let boolean = confirm("确认要删除该用户吗?");
+            if (boolean===true){
+                let url_delete="/user/deleteUserById?user_id="+user_id
+                $.get(url_delete,function (data) {
+                    if(data==="true"){
+                        alert("删除成功")
+                    }else {
+                        alert("删除失败")
+                    }
+                })
+            }else{
+                alert("您取消了删除")
+            }
+        }
+        function checkForm() {
+            // 1.获取表数据
+            let user_account = document.getElementsByName("user_account")[0].value;
+            let user_password = document.getElementsByName("user_password")[0].value;
+            let user_password_confirm = document.getElementsByName("user_password_confirm")[0].value;
+            let user_signature = document.getElementsByName("user_signature")[0].value;
+            let user_avator = document.getElementsByName("user_avator")[0].value;
+            let user_name = document.getElementsByName("user_name")[0].value;
+            let user_role = document.getElementsByName("user_role")[0].value;
+            let reg = '^(?![a-zA-Z]+$)(?![0-9]+$)[A-Za-z0-9]{8,18}$'
+            // 2.进行相关校验
+            if(user_account===''||user_password===''||user_password_confirm===''||user_signature===''||user_avator===''||user_name===''||user_role===''){
+                alert("不能为空")
+            } else if (user_account.length<7||user_account.length>10){
+                alert("用户账号长度在8-10")
+            }else if(!user_password.match(reg)){
+                // 密码校验要求二、
+            //     1.密码必须由字母、数字组成，区分大小写
+            //     2.密码长度为8-18位
+            //
+            //     实现1：
+            // ^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]{8,18}$
+            //     实现2：
+            // ^(?![a-zA-Z]+$)(?![0-9]+$)[A-Za-z0-9]{8,18}$
+                alert("密码不符合规范,必须由字母、数字组成，区分大小写,密码长度为8-18位")
+            }else if(user_password!==user_password_confirm){
+                alert("两次密码不一致")
+            }
+            else if(user_signature===''){
+                alert("请填写个性签名")
+            }else if(user_avator===''){
+                alert("请填写用户头像地址")
+            }else{
+                // 表单通过
+            }
+        }
+    </script>
+    <style>
+        .user{
+            width: 100%;
+            height: 80px;
+            background-color: #4E5465;
+            line-height: 40px;
+        }
+        .user span{
+            color: #eb7350;
+            font-size: 20px;
+        }
+        .updateName,.deleteUserById{
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            background-color: #4E5465;
+            margin-top: 10px;
+        }
+        .updateName input{
+            line-height: 50px;
+            width: 250px;
+            border-radius: 10px;
+        }
+        .deleteUserById button{
+            height: 60px;
+            width: 80px;
+            background-color: #eb7350;
+        }
+        form{
+            width: 600px;
+            line-height: 40px;
+            border: 1px solid #01AAED;
+            border-radius: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+<!--1.用户信息-->
+   <div class="user">
+       <i class="layui-icon layui-icon-menu-fill"></i>用户编号: <span id="user_id"></span><br>
+       <i class="layui-icon layui-icon-menu-fill"></i>用户名称: <span id="user_name"></span><br>
+   </div>
+<!--2.根据用户id来修改用户名称-->
+  <div class="updateName">
+      用户名称修改为：<input type="text" placeholder="请输入新的用户名" id="update_name"><button onclick="updateNameById()">修改</button>
+  </div>
+<!--3.删除该用户-->
+<div class="deleteUserById">
+    <button onclick="deleteUserById()">删除该用户</button>
+</div>
+<!--4.增加一个用户-->
+<div style="background-color: #4E5465;width: 100%;margin-top: 10px;line-height: 50px"> 增加一个用户：</div>
+<form action="/user/addAUser" method="get">
+    <table class="layui-table" lay-even lay-skin="row" style="width: 600px">
+        <thead>
+            <tr>
+                <td colspan="3">增加一个用户</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="1">用户账号：</td>
+                <td colspan="2"><label>
+                    <input type="text" name="user_account" id="add_account">
+                </label> </td>
+            </tr>
+            <tr>
+                <td colspan="1">用户密码：</td>
+                <td colspan="2"><label>
+                    <input type="password" name="user_password" id="add_password">
+                </label> </td>
+            </tr>
+            <tr>
+                <td colspan="1">用户确认密码：</td>
+                <td colspan="2"><label>
+                    <input type="password" name="user_password_confirm">
+                </label></td>
+            </tr>
+        <tr>
+            <td colspan="1">用户签名：</td>
+            <td colspan="2"><label>
+                <input type="text" name="user_signature" id="add_signature">
+            </label> </td>
+        </tr>
+        <tr>
+            <td colspan="1">用户头像：</td>
+            <td colspan="2"><label>
+                <input type="text" name="user_avator" id="add_avator">
+            </label></td>
+        </tr>
+        <tr>
+            <td colspan="1">用户名称：</td>
+            <td colspan="2"><label>
+                <input type="text" name="user_name" id="add_name">
+            </label></td>
+        </tr>
+        <tr>
+            <td colspan="1">用户角色：</td>
+            <td colspan="2">
+                <label>
+                    <input type="radio" name="user_role" value="common" checked>
+                </label>普通用户
+                <label>
+                <input type="radio" name="user_role" value="wexin">
+            </label>特权用户
+
+                <label>
+                    <input type="radio" name="user_role" value="admin">
+                </label>管理员用户 ======默认普通用户</td>
+        </tr>
+        <tr>
+            <td><input type="submit" onmouseenter="checkForm()"></td>
+            <td><input type="reset"></td>
+            <td><input type="button" value="表单校验" onclick="checkForm()"></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+
+</body>
+</html>

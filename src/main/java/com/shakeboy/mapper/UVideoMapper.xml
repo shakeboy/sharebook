@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.UVideoMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.UVideo">
+        <result column="uvideo_id" jdbcType="INTEGER" property="uvideo_id"/>
+        <result column="uvideo_name" jdbcType="VARCHAR" property="uvideo_name"/>
+        <result column="uvideo_address" jdbcType="VARCHAR" property="uvideo_address"/>
+    </resultMap>
+
+    <select id="getAllVideo" resultType="com.shakeboy.pojo.UVideo">
+        select * from uvideos
+    </select>
+
+</mapper>

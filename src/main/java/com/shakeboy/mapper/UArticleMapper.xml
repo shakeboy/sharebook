@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.UArticleMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.UArticle">
+        <result column="uarticle_id" jdbcType="INTEGER" property="uarticle_id"/>
+        <result column="uarticle_name" jdbcType="VARCHAR" property="uarticle_name"/>
+        <result column="uarticle_content" jdbcType="VARCHAR" property="uarticle_content"/>
+    </resultMap>
+
+    <select id="selAllArticle" resultType="com.shakeboy.pojo.UArticle">
+        select * from uarticles where deleted=0
+    </select>
+    <select id="selDelArticle" resultType="com.shakeboy.pojo.UArticle">
+        select * from uarticles where deleted=1
+    </select>
+    <select id="search" resultType="com.shakeboy.pojo.UArticle">
+        select * from uarticles
+        where uarticle_name like "%" #{value} "%"
+        or uarticle_content like "%" #{value} "%"
+    </select>
+    <select id="getArticleById" resultType="com.shakeboy.pojo.UArticle">
+        select * from uarticles
+        where uarticle_id = #{uarticle_id}
+    </select>
+    <update id="deleteArticle">
+        update uarticles
+        set deleted = 1
+        where uarticle_id = #{uarticle_id}
+    </update>
+    <update id="cancelDeleteArticle">
+        update uarticles
+        set deleted = 0
+        where uarticle_id = #{uarticle_id}
+    </update>
+    <delete id="deleteArticleForever">
+        delete from uarticles
+        where uarticle_id = #{uarticle_id}
+    </delete>
+</mapper>

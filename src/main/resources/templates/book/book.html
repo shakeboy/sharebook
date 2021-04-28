@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍管理</title>
+    <link rel="stylesheet" href="./../layui/css/layui.css" th:href="@{./../layui/css/layui.css}" media="all">
+    <script src="./../layui/layui.js" th:src="@{./../layui/layui.js}"></script>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script>
+        window.onload=function(){
+            $.get("/book/getAllBook",function(data){
+                let json = $.parseJSON(data);
+                console.log(json)
+                let book_container = document.getElementsByClassName("book_container")[0];
+                for (let i = 0; i < json.length; i++) {
+                    let book_element = document.createElement("div");
+                    book_element.className="book";
+                    book_element.innerHTML = "<div>" +
+                        "            <div><img id='bookImg' src="+json[i]["book_image"]+" alt=''></div>\n" +
+                        "            <div class='content'>" +
+                        "                <div>"+json[i]["book_name"]+"</div>" +
+                        "                <div>"+json[i]["book_description"]+"</div>" +
+                        "                <div>"+json[i]["book_content"]+"</div>" +
+                        "            </div>" +
+                        "        </div>"
+                    book_container.appendChild(book_element)
+                }
+            })
+        }
+    </script>
+    <style>
+        .book_container{
+            width: 100%;
+            height: auto;
+        }
+        .book{
+            width: 100%;
+            height:200px;
+            overflow: hidden;
+            background-color: #2D93CA;
+            margin-bottom: 10px;
+        }
+        #bookImg{
+            width:160px;
+            height: 160px;
+        }
+    </style>
+</head>
+<body>
+    <div class="book_container">
+<!--        <div class="book">-->
+<!--            <div><img src="" alt=""></div>-->
+<!--            <div class="content">-->
+<!--                <div>书名</div>-->
+<!--                <div>description</div>-->
+<!--                <div>content</div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</body>
+</html>

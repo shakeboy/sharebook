@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.BookMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.Book">
+        <result column="book_id" jdbcType="INTEGER" property="book_id"/>
+        <result column="book_name" jdbcType="VARCHAR" property="book_name"/>
+        <result column="book_description" jdbcType="VARCHAR" property="book_description"/>
+        <result column="book_image" jdbcType="VARCHAR" property="book_image"/>
+        <result column="book_content" jdbcType="VARCHAR" property="book_content"/>
+    </resultMap>
+
+    <select id="getAllBook" resultType="com.shakeboy.pojo.Book">
+        select * from books
+    </select>
+
+</mapper>

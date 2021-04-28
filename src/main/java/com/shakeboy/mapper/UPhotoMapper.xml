@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.UPhotoMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.UPhoto">
+        <result column="uphoto_id" jdbcType="INTEGER" property="uphoto_id"/>
+        <result column="uphoto_name" jdbcType="VARCHAR" property="uphoto_name"/>
+        <result column="uphoto_address" jdbcType="VARCHAR" property="uphoto_address"/>
+
+    </resultMap>
+
+    <select id="selAllPhoto" resultType="com.shakeboy.pojo.UPhoto">
+        select * from uphotos
+    </select>
+
+</mapper>

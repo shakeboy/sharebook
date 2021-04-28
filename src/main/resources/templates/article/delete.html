@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文章发表</title>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script>
+        window.onload=function () {
+            $.get("/article/selDelArticle",function (data) {
+                let json = $.parseJSON(data);
+                let article = document.getElementsByClassName("article")[0];
+                console.log(json)
+                //渲染十条数据
+                for (let i = 0; i < json.length; i++) {
+                    // let title = document.getElementById('title');
+                    // let content = document.getElementById('content');
+                    let element = document.createElement("div");
+                    element.className='article_get';
+                    element.innerHTML="<div id=\"title\" class='title"+i+"'>"+
+                        "<span>"+json[i]["uarticle_name"]+"</span>" +
+                        "<span><a href='#' onclick='getArticle("+i+")'>访问</a></span>" +
+                        "<span><a href='#' onclick='deleteArticle("+json[i]["uarticle_id"]+")'>物理删除</a></span>" +
+                        "<span><a href='#' onclick='cancelDeleteArticle("+json[i]["uarticle_id"]+")'>撤销</a></span>" +
+                        "</div>\n" +
+                        "        <div id=\"content\" title='"+json[i]["uarticle_content"]+"'>"+json[i]["uarticle_content"].substr(0,100)+"......"+"</div>"
+                    article.appendChild(element)
+                }
+            })
+        }
+        function getArticle(id){
+            console.log(id)
+            localStorage.setItem("uarticle_id",id+1);
+            window.location.href='/article/article';
+        }
+        function deleteArticle(id) {
+            console.log(id)
+            window.location.href='/article/deleteArticleForever?uarticle_id='+(id);
+        }
+        function cancelDeleteArticle(id) {
+            console.log(id)
+            window.location.href='/article/cancelDeleteArticle?uarticle_id='+(id);
+        }
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .article{
+            background-color: #9F9F9F;
+            width: 100%;
+            height: 800px;
+        }
+        .article_get{
+            margin-left: 10px;
+            margin-right: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #2D93CA;
+            display: flex;
+            flex-direction: row;
+            height: 100px;
+        }
+        #title{
+            width: 20%;
+            line-height: 100px;
+            background-color: #2F4056;
+        }
+        #content{
+            width: 80%;
+            height: 100px;
+            background-color: #eb7350;
+        }
+    </style>
+</head>
+<body>
+<div style="background-color: #2E2D3C;width: 100%;line-height: 60px;padding-left: 20px;font-family: 微软雅黑;font-size: 40px">用户已发表文章</div>
+<div class="article">
+    <!--    <div class="article_get">-->
+    <!--        <div id="title">-->
+    <!--            <span>标题 </span>-->
+    <!--            <span><a href="/article/article?uarticle_id=1">访问</a></span>-->
+    <!--            <span><a href="/article/delete">删除</a></span>-->
+    <!--        </div>-->
+    <!--        <div id="content">内容</div>-->
+    <!--    </div>-->
+</div>
+</body>
+</html>

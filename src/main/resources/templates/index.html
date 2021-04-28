@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>共享书城后台管理系统</title>
+    <link rel="stylesheet" th:href="@{layui/css/layui.css}" href="layui/css/layui.css">
+    <base target="target_iframe">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">共享书城后台管理</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/user/user">用户管理</a></li>
+            <li class="layui-nav-item"><a href="/book/book">书库管理</a></li>
+            <li class="layui-nav-item"><a href="/article/article">文章管理</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/uvideo/video">视频管理</a></dd>
+                    <dd><a href="/uphoto/photo">图片管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:">
+                    <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1489568000,1089161720&fm=26&gp=0.jpg" class="layui-nav-img">
+                    shakeboy
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/user/userInfo">基本资料</a></dd>
+                    <dd><a href="/user/userSetting">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/login" target="_blank">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="">人员管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/user/commonUser">普通用户</a></dd>
+                        <dd><a href="/user/adminUser">特权用户</a></dd>
+                        <dd><a href="/user/wexinUser">后台管理员</a></dd>
+                        <dd><a href="/user/searchUser">人员检索</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a>文章管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/article/publish">文章发表</a></dd>
+                        <dd><a href="/article/delete">文章删除</a></dd>
+                        <dd><a href="/article/search">文章检索</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="https://mp.baomidou.com/">最新技术</a></li>
+                <li class="layui-nav-item"><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/"
+                                              target="_blank">微信小程序</a></li>
+                <li class="layui-nav-item"><a href="https://spring.io/" target="_blank">springboot</a></li>
+                <li class="layui-nav-item"><a href="https://mybatis.org/mybatis-3/zh/" target="_blank">mybatis3</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <iframe src="" name="target_iframe" width="100%" height="100%"></iframe>
+    </div>
+
+    <div class="layui-footer">
+        网上共享书城后台管理系统
+    </div>
+</div>
+<script th:src="@{layui/layui.js}" src="layui/layui.js" charset="utf-8"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.AdminMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.Admin">
+        <result column="a_name" jdbcType="VARCHAR" property="a_name"/>
+        <result column="a_password" jdbcType="VARCHAR" property="a_password"/>
+        <result column="a_role" jdbcType="VARCHAR" property="a_role"/>
+    </resultMap>
+
+    <select id="SelByName" resultType="com.shakeboy.pojo.Admin">
+        select * from admins where a_name = #{a_name}
+    </select>
+
+</mapper>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文章管理</title>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script>
+        window.onload=function () {
+            let url = "/article/getArticleById?uarticle_id="+localStorage.getItem("uarticle_id");
+            console.log(url)
+            $.get(url,function (data) {
+                let json = $.parseJSON(data);
+                console.log(json)
+                // 渲染
+                let article_title = document.getElementById("article_title");
+                let article_content = document.getElementById("article_content");
+                article_title.innerHTML=json["uarticle_name"];
+                article_content.innerHTML=json["uarticle_content"]
+            })
+            localStorage.removeItem("uarticle_id");
+        }
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .article{
+            margin-top: 0;
+            padding: 0;
+            margin-right: 20px;
+            height: 800px;
+            background-color: #4E5465;
+        }
+        #article_title{
+            line-height: 40px;
+            color: #eb7350;
+            padding-left: 20px;
+        }
+        #article_content{
+            background-color: #9F9F9F;
+            font-size: 20px;
+            padding-left: 20px;
+            height: 100%;
+            word-break:break-all;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="article">
+    <div id="article_title">标题</div>
+    <hr style="color: #eb7350;size: A4">
+    <div id="article_content">文本内容</div>
+</div>
+</body>
+</html>

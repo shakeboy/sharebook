@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shakeboy.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.shakeboy.pojo.User">
+        <result column="u_id" jdbcType="INTEGER" property="u_id"/>
+        <result column="u_name" jdbcType="VARCHAR" property="u_name"/>
+        <result column="u_account" jdbcType="VARCHAR" property="u_account"/>
+        <result column="u_password" jdbcType="VARCHAR" property="u_password"/>
+        <result column="u_description" jdbcType="VARCHAR" property="u_description"/>
+    </resultMap>
+
+    <select id="Sel" resultType="com.shakeboy.pojo.User">
+        select * from share_user where u_id = #{u_id}
+    </select>
+    <select id="selAllUser" resultType="com.shakeboy.pojo.User">
+        select * from users
+    </select>
+    <!--    查询所有普通用户-->
+    <select id="getCommonUser" resultType="com.shakeboy.pojo.User">
+        select * from users where user_role=#{user_role};
+    </select>
+<!--    模糊查询用户信息-->
+    <select id="search" resultType="com.shakeboy.pojo.User">
+        select * from users
+        where user_name like "%"#{value}"%"
+        or user_signature like "%"#{value}"%"
+        or user_account like "%"#{value}"%"
+        or user_id like "%"#{value}"%"
+        or user_signature like "%"#{value}"%"
+        or user_role like "%"#{value}"%"
+    </select>
+    <update id="updateNameById" >
+        update users set user_name=#{user_name}
+        where user_id=#{user_id}
+    </update>
+    <delete id="deleteUserById">
+        delete from users
+        where user_id=#{user_id}
+    </delete>
+    <insert id="addAUser">
+        insert into users (user_account,user_password,user_signature,user_avator,user_name,user_role)
+        values (#{user_account},#{user_password},#{user_signature},#{user_avator},#{user_name},#{user_role})
+    </insert>
+</mapper>

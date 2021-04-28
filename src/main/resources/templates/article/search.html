@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>检索页面</title>
+    <link rel="stylesheet" href="./../layui/css/layui.css" th:href="@{./../layui/css/layui.css}" media="all">
+    <script src="./../layui/layui.js" th:src="@{./../layui/layui.js}"></script>
+    <script th:src="@{./../js/jquery/jquery-3.3.1.js}" src="./../js/jquery/jquery-3.3.1.js}"></script>
+    <script>
+        function search() {
+            // 1.获取文本值
+            let value = document.getElementById("search_text").value;
+            let search_tip = document.getElementsByClassName("search_tip")[0];
+            search_tip.style.display="block";
+            // 2.根据输入的值进行模糊查询
+            let url = "/article/searchByValue?value="+value
+            $.get(url,function (data) {
+                // 查询到的数据为json字符串
+                let json = $.parseJSON(data) // 转成JSON对象
+                search_tip.innerHTML = "";
+                console.log(json)
+                let l = 0; //保存模糊查询的条数
+                // 创建一个p标签
+                for (let i = 0; i < json.length && i < 10; i++) {
+                    let element = document.createElement("div");
+                    element.id = "element" + i
+                    element.innerHTML = "uarticle_id=" + json[i]["uarticle_id"] + " uarticle_name=" + json[i]["uarticle_name"]
+                    search_tip.appendChild(element)
+                    l = i + 1
+                }
+                // 点击事件
+                for (let i = 0; i < l; i++) {
+                    let id = document.getElementById("element" + i);
+                    id.onclick = function (e) {
+                        let b = confirm("确认操作该用户?");
+                        console.log(b)
+                        if (b === true) {
+                            let html = id.innerHTML;
+                            console.log(html)
+                            let strings = html.split(' ');
+                            // 发送请求到增删改页面
+                            console.log(strings[0])
+                            let uarticle_id = strings[0].split("=")[1];
+                            let uarticle_name = strings[1].split("=")[1]
+                            window.localStorage.setItem("uarticle_id", uarticle_id)
+                            window.localStorage.setItem("uarticle_name", uarticle_name)
+                            window.location.href = "/article/article?uarticle_id=" + uarticle_id + "&uarticle_name=" + uarticle_name
+                        } else {
+                            alert("取消了弹窗")
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+    <style>
+        .search_tip{
+            background-color: #9F9F9F;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-right: 40px;
+            border: #1E9FFF;
+            border-radius: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .search_tip div{
+            background-color: #4E5465;
+            line-height: 40px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        #search_text{
+            outline-style: none ;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 13px 14px;
+            width: 620px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-family: "Microsoft soft";
+        }
+        button{
+            width: 100px;
+            height: 46px;
+            background-color: #9F9F9F;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" placeholder="根据相关信息进行搜索" title="请输入关键字" id="search_text" oninput="search()">
+    <button>搜索</button>
+</div>
+<div class="search_tip" style="display: none">
+</div>
+</body>
+</html>
