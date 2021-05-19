@@ -1,0 +1,29 @@
+<view class="top_first">
+  <view style="width:50%;height:100%;" bindtap="toCanlendar">日历</view>
+  <view style="height:100%;margin-left:100px" bindtap="toStar">个人书库</view>
+</view>
+<view class="search_second">
+  <input type="text" bindinput="getQuery" style="width:88%;margin-left:2%" />
+  <input type="button" style="width:10%" placeholder="搜索" disabled="true" bindtap="toQuery" />
+</view>
+<view class="recommend_third">
+  <view wx:for="{{recommend}}" wx:key="index" wx:for-item="item"
+    style="background-color:red;margin-top:10px;margin-left:10px;display:flex;flex-direction:row;height:100px">
+    <view style="width:100px;height:100px" bindtap="toBookDetail" data-item="{{item}}">
+      <image src="{{item.bookImage}}" style="width:100px;height:100px"></image>
+    </view>
+    <view style="overflow:hidden" bindtap="toBookDetail" data-item="{{item}}">
+      <view>{{item.bookName}}--{{item.bookAuthor}}</view>
+      <view>{{item.bookDescription}}</view>
+    </view>
+  </view>
+</view>
+<scroll-view class="type_four" scroll-x>
+  <view class="type_first" style="{{isred1}}background-color:red" bindtap="isred1" data-id="1">文学</view>
+  <view class="type" style="{{isred2}}background-color:red" bindtap="isred2" data-id="2">计算机</view>
+  <view class="type" style="{{isred3}}background-color:red" bindtap="isred3" data-id="3">神话</view>
+  <view class="type" style="{{isred4}}background-color:red" bindtap="isred4" data-id="4">小说</view>
+  <view class="type" style="{{isred5}}background-color:red" bindtap="isred5" data-id="5">诗歌</view>
+  <view class="type" style="{{isred6}}background-color:red" bindtap="isred6" data-id="6">名著</view>
+  <view class="type_last" style="{{isred7}}background-color:red" bindtap="isred7" data-id="7">戏剧</view>
+</scroll-view>
