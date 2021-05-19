@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/calendar/calendar",
+    "pages/toDeliverArticle/toDeliverArticle",
+    "pages/selfCenter/selfCenter",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/deliver/deliver",
+    "pages/message/message",
+    "pages/index/index",
+    "pages/self_setting/self_setting",
+    "pages/signature/signature",
+    "pages/userInfo_edit/userInfo_edit",
+    "pages/photo/photo",
+    "pages/bookstar/bookstar",
+    "pages/goodfriend/goodfriend",
+    "pages/bookking/bookking",
+    "pages/toDeliverVideo/toDeliverVideo",
+    "pages/toDeliverWord/toDeliverWord",
+    "pages/toDetailArticle/toDetailArticle",
+    "pages/detailUBook/detailUbook",
+    "pages/makeFriend/makeFriend",
+    "pages/map/map",
+    "pages/todetailbook/todetailbook"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "共享书城",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#ff2d4a",
+    "backgroundColor": "#fafafa",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "社区",
+        "iconPath": "./pages/icon/社区.png",
+        "selectedIconPath": "./pages/icon/社区s.png"
+      },
+      {
+        "pagePath": "pages/deliver/deliver",
+        "text": "发表",
+        "iconPath": "./pages/icon/发表.png",
+        "selectedIconPath": "./pages/icon/发表s.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "./pages/icon/聊天.png",
+        "selectedIconPath": "./pages/icon/聊天s.png"
+      },
+      {
+        "pagePath": "pages/selfCenter/selfCenter",
+        "text": "个人中心",
+        "iconPath": "./pages/icon/个人中心.png",
+        "selectedIconPath": "./pages/icon/个人中心s.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  }
+}
