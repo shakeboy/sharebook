@@ -1,0 +1,66 @@
+page{
+  width: 100%;
+  height: auto;
+  background-color: khaki;
+}
+#Tuijian{
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+
+}
+.titleUBook{
+  border: 1px solid slateblue;
+  border-radius: 10px;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+#sousuo{
+  padding: .375rem .75rem;
+  border-radius:.80rem;
+  border: 1px solid #ced4da;
+  margin-top: 10px;
+  margin-right: 60px;
+  margin-left: 10px;
+  background-color: lightcoral;
+}
+.TI{
+  background-color: lightgreen;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+}
+#Touxiang{
+  margin-left: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+#idofimg{
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.content{
+  height: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  background-color: lightpink;
+  overflow: hidden;
+}
+.view{
+  display: flex;
+  flex-direction: row;
+  background-color: linen;
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#zan,#transfer,#star,#recommend{
+  width: 40px;
+}

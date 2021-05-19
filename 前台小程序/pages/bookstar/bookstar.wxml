@@ -1,0 +1,10 @@
+<view wx:for="{{arrBook}}" wx:key="index" wx:for-item="item"
+  style="background-color:red;margin-top:10px;margin-left:10px;display:flex;flex-direction:row;height:100px">
+  <view style="width:100px;height:100px" bindtap="toBookDetail" data-item="{{item}}">
+    <image src="{{item.bookImage}}" style="width:100px;height:100px"></image>
+  </view>
+  <view style="overflow:hidden" bindtap="toBookDetail" data-item="{{item}}">
+    <view>{{item.bookName}}--{{item.bookAuthor}}</view>
+    <view>{{item.bookDescription}}</view>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+<view>
+  <view style="height:2px;background-color:black"></view>
+  <view style="line-height:40px;margin-left:10px;">
+    {{ubook.ubookName}}
+  </view>
+  <view style="height:2px;background-color:black"></view>
+  <view style="height:auto;margin-left:10px;margin-top:10px">
+    {{ubook.ubookContent}}
+  </view>
+</view>
+

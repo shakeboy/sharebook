@@ -1,0 +1,11 @@
+
+<view class="person" wx:for="{{friends}}">
+  <view class="avator">
+    <image id="avator" src="{{item.userAvator}}">
+    </image>
+  </view>
+  <view class="message">
+    <view id="person">{{item.userName}}</view>
+    <view id="message">{{item.userId}}最新消息</view>
+  </view>
+</view>

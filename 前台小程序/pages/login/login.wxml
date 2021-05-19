@@ -1,0 +1,22 @@
+  <!-- 登录页面 --><form>
+<view class="form" style="background-image: url('https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3217343323,1924004132&fm=26&gp=0.jpg');">
+  <view class="form_container">
+    <view class="login">Login</view>
+    <view class="loginInfo">
+      <view class="username">
+        <view class="section_title">账号</view>
+        <view><input id="u_account" name="username" placeholder="请输入姓名" bindinput="inputName" /></view>
+      </view>
+      <view class="password">
+        <view class="section_title">密码</view>
+        <view><input type="password" id="u_password" name="password" placeholder="请输入密码" bindinput="inputPassword"/></view>
+      </view>
+    </view>
+  </view>
+  <view class="btn-area">
+    <button style="margin-left:40px;margin-right:40px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:10px" bindtap="login">登录</button>
+    <button style="margin-left:40px;margin-right:40px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:10px" bindtap="reset">重置</button>
+    <button style="margin-left:40px;margin-right:40px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:10px" bindtap="goToRegister" bindtap="toRegister">没有账号，去注册</button>
+    <button style="margin-left:40px;margin-right:40px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:10px" bindtap="weixinLogin">微信登陆</button>
+  </view>
+</view></form>

@@ -1,0 +1,53 @@
+page{
+  width: 100%;
+  height: auto;
+  background-color: rgb(166, 171, 179);
+  display: flex;
+  flex-direction: column;
+}
+.fourForm{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  justify-content: space-around;
+  background-color: rgb(228, 204, 204);
+  border-radius: 10px;
+  height: 400px;
+}
+#article,#video,#photo,#word{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-left: 10px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: lightpink;
+  display: flex;
+  flex-direction: row;
+}
+.contentlist{
+  background-color: rgb(223, 174, 223);
+  margin-left: 10px;
+  height: 160px;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+#title{
+  margin-top: 4px;
+  margin-bottom: 2px;
+  height: 20px;
+  padding-left: 10px;
+  /* background-color:rgb(166, 201, 218); */
+}
+#content{
+  /* margin-right: 10px; */
+  /* margin-bottom: 4px; */
+  height: 134px;
+  background-color: rgb(243, 243, 250);
+  overflow: hidden;
+  padding-right: 20px;
+  padding-left: 10px;
+}

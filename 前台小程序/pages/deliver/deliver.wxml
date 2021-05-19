@@ -1,0 +1,21 @@
+<!-- 1.发表内容形式 -->
+<view class="fourForm">
+  <!-- 四种形式 -->
+  <view id="article" bindtap="toDeliverArticle">文章发表</view>
+  <!-- 视频发表
+  <view id="video" bindtap="toDeliverVideo">视频发表</view> -->
+   <!-- 书籍发表 -->
+   <view id="word" bindtap="toDeliverWord">书籍发表</view>
+  <!-- 地图调用 -->
+  <view id="photo">
+    <view bindtap="toMap" style="line-height:80px">地图调用</view>
+    <view style="line-height:80px">
+      <input type="text" style="background-color:rgb(228, 204, 204);height:80px;font-size:40px;border-radius:10px;width:250px;margin-left:20px" bindinput="getQuery"/>
+    </view>
+  </view>
+</view>
+<!-- 2.发表的内容列表清单 -->
+<view class="contentlist" wx:for="{{article}}" wx:for-item="item" wx:key="index">
+  <view id="title" data-item="{{item}}" bindtap="toDetail">{{item.uarticleName}}</view>
+  <view id="content" data-item="{{item}}" bindtap="toDetail">{{item.uarticleContent}}</view>
+</view>

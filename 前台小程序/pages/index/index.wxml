@@ -1,0 +1,30 @@
+<!-- 推荐页面 -->
+<view id="Tuijian">
+  <input placeholder="良辰美景" id="sousuo" bindinput="keyValueSearch"></input>
+  <!-- 推荐信息列表 -->
+  <view wx:for="{{ubook}}" wx:key="index" wx:for-item="item" class="titleUBook">
+    <!-- 头像和id -->
+    <view class="TI">
+      <image id="Touxiang"
+        src="{{item.ubookImage}}">
+      </image>
+      <!-- https://upload.jianshu.io/users/upload_avatars/14727936/337e5fc4-b026-432b-b75f-b722e41f101b?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240 -->
+      <view id="idofimg">{{item.ubookName}}</view>
+    </view>
+    <!-- 发表内容 -->
+    <view class="content" data-item="{{item}}" bindtap="toDetail">
+      {{item.ubookContent}}
+    </view>
+    <!-- 点赞和转发功能 -->
+    <view class="view">
+      <!-- 点赞 -->
+      <view id="zan" data-item="{{item}}" bindtap="ubookGood">点赞{{item.ubookGood}}</view>
+      <!-- 转发 -->
+      <view id="transfer" data-item="{{item}}" bindtap="ubookTransfer">转发{{item.ubookTransfer}}</view>
+      <!-- 评论 -->
+      <view id="recommend" data-item="{{item}}" bindtap="ubookComment">评论{{item.ubookComment}}</view>
+      <!-- 作者 -->
+      <view id="recommend" data-item="{{item}}" bindtap="toAddFriend">作者{{item.userId}}</view>
+    </view>
+  </view>
+</view>
