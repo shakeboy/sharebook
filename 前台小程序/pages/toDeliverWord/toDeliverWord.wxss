@@ -1,0 +1,26 @@
+page{
+  width: 100%;
+  height: 100%;
+}
+form{
+  width: 100%;
+  height: 100%;
+}
+.form{
+  width: 100%;
+  height: 100%;
+
+}
+.title,.title>input,.description,.description>input,.address,.address>input{
+  width: 100%;
+  height: 40px;
+  background-color: rgb(130, 108, 170);
+}
+.content{
+  width: 100%;
+  height: 400px;
+  margin-top: 4px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: rgb(57, 27, 112);
+}

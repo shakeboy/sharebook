@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "文章发表",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

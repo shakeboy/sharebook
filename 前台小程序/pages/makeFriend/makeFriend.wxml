@@ -1,0 +1,19 @@
+<view class="other">
+  <view class="other_top">
+    <view class="img"><image src="{{userInfo.userAvator}}"></image> </view>
+    <view class="name_sig">
+      <view id="name">昵称:{{userInfo.userName}} </view>
+      <view id="sig">个性签名:{{userInfo.userSignature}}</view>
+    </view>
+  </view>
+
+  <view class="article" wx:for="{{article}}" wx:key="index">
+    <view>{{item.uarticleName}}</view>
+    <view data-item="{{item}}" bindtap="toDetail">{{item.uarticleContent}}</view>
+  </view>
+
+  <view class="bottom">
+    <view class="but"><button style="background-color:blue">发消息</button></view>
+    <view class="but"><button style="background-color:yellow" bindtap="addFriend">加好友</button></view>
+  </view>
+</view>

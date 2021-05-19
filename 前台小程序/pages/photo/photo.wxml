@@ -1,0 +1,10 @@
+<view wx:for="{{photos}}" wx:for-key="index" wx:for-item="item"
+  style="display:flex;flex-direction:row;width:100%;height:200px">
+  <view style="width:30%;line-height:200px;display:flex;flex-direction:row;">{{index+1}}.
+    <view><label style="border:1px solid red" bindtap="toUse" data-item="{{item}}">使用</label></view>
+    <view><label style="border:1px solid red" bindtap="toDelete" data-item="{{item}}">删除</label></view>
+  </view>
+  <view style="width:70%;height:200px">
+    <image bindtap="" src="{{item.uphotoAddress}}" style="width:100%;height:100%"></image>
+  </view>
+</view>

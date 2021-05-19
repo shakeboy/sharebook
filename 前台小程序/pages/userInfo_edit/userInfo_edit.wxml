@@ -1,0 +1,20 @@
+<view bindtap="imgUpload">
+  <view><button>头像上传</button></view>
+  <cover-image src='{{user_avator}}'>
+  </cover-image>
+</view>
+<form action="" bindsubmit="formSubmit">
+  <view style="display:flex;flex-direction:row;margin-top:10px;margin-left:4px">昵称修改: <input type="text" name="user_name"/></view>
+  <view style="display:flex;flex-direction:row;margin-top:10px;margin-left:4px">密码修改:<input type="text" name="user_password"/></view>
+  <view><button form-type="submit">提交</button></view>
+  <view><button form-type="reset">重置</button></view>
+  <view style="display:flex;flex-direction:row;margin-top:10px;margin-left:4px">
+    角色申请:
+    <radio-group bindchange="chooseRole">
+      <radio value="admin">admin</radio>
+      <radio value="common">common</radio>
+      <radio value="vistor">vistor</radio>
+    </radio-group>
+  </view>
+  <view><button bindtap="roleApplication">角色申请提交</button></view>
+</form>

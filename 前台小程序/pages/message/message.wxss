@@ -1,0 +1,48 @@
+page{
+  width:100%;
+  height: 100%;
+}
+.person{
+  width: 100%;
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+  border-top: 4px solid black;
+  background-color: rgb(75, 48, 138);
+  margin-bottom: 4px;
+}
+.avator{
+  width:50px;
+  height: 50px;
+}
+#avator{
+  width:50px;
+  height: 50px;
+  border-radius: 25px;
+}
+.message{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(39, 182, 94);
+  display: flex;
+  flex-direction: column;
+}
+#person{
+  width:100%;
+  height: 40%;
+}
+#message{
+  width:100%;
+  height: 60%;
+}
+/* 弹窗样式 */
+.requestList{
+  position: fixed;
+  width: 100%;
+  height: 800rpx;
+  bottom: 0;
+  background-color: rgb(204, 188, 182);
+}
+.show{
+  display: none;
+}

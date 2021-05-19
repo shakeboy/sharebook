@@ -1,0 +1,2 @@
+<button bindtap="toUserInfoEdit">修改个人信息</button>
+<button bindtap="loginOut">退出登录</button>

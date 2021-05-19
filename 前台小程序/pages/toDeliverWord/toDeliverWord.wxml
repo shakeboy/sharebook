@@ -1,0 +1,20 @@
+<form action="" bindsubmit="formSubmit">
+  <view class="form">
+    <view class="title">
+      <input type="text" name="ubook_name" placeholder="书籍名称" />
+    </view>
+    <view class="description">
+      <input type="text" name="ubook_description" placeholder="书籍描述" />
+    </view>
+    <view class="address">
+      <input type="text" name="ubook_address" placeholder="书籍封面" />
+    </view>
+    <view class="content">
+      <textarea name="ubook_content" placeholder="书籍内容"></textarea>
+    </view>
+    <view class="bottom">
+      {{create_time}}==={{user_name}}
+    </view>
+    <button form-type="submit" style="margin-top:0px">发表</button>
+  </view>
+</form>

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {},
+  "navigationBarTitleText": "编辑个性签名",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#aaafff",
+  "enablePullDownRefresh": true
+}

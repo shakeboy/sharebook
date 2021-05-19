@@ -1,0 +1,19 @@
+<view class="signaturePart" bindtouchstart='start' bindtouchend='end' bindtouchmove='move'>
+  <form bindsubmit="formSubmit" class="form">
+    <textarea name="signature_content" id="signature" cols="30" rows="10" value="在此处输入你的最新签名吧"></textarea>
+    <button
+      style="margin-left:6px;margin-right:190px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:0px"
+      form-type="reset">清空</button>
+    <button
+      style="margin-left:190px;margin-right:20px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:-40px"
+      form-type="submit">发布</button>
+    <!--  style="margin-left:20px;margin-right:190px;width:auto;background-color: rgb(216, 186, 186);border-radius: 16px;border-color: lightskyblue;margin-top:-80px" -->
+  </form>
+  <view id="seperateLine"></view>
+  <view class="history" wx:for="{{signature}}" wx:key="*this" wx:for-index="index" wx:for-item="item">
+    <view id="history_time">{{item["createTime"]}}</view>
+    <view id="history_content">{{item["signatureContent"]}}</view>
+    <view bindtap="delete" data-id="{{index}}" data-signatureContent="{{item['signatureContent']}}"
+      data-item="{{item}}">删除</view>
+  </view>
+</view>

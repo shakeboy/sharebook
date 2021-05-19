@@ -1,0 +1,9 @@
+<!-- name+content====根据id写入 -->
+<form action="" bindsubmit="formSubmit">
+  <view class="title">
+    <input type="text" placeholder="请输入标题" name="title" style="width:80%"/>
+    <button form-type="submit" style="margin-right:0px;margin-top:-40px;margin-left:260px;width:auto">发表</button>
+  </view>
+  <view class="seperate"></view>
+  <view class="content"><textarea name="content" id="content" maxlength="2000" auto-height="true"></textarea></view>
+</form>

@@ -1,0 +1,14 @@
+<view>
+  <view style="height:2px;background-color:black"></view>
+  <view style="line-height:40px;margin-left:10px;">
+    {{item.bookName}}
+  </view>
+  <view style="height:2px;background-color:black"></view>
+  <view style="height:auto;margin-left:10px;margin-top:10px">
+    {{item.bookDescription}}
+  </view>
+  <view style="position:fixed;bottom:0;width:100%">
+    <button style="width:100%;background-color:blue" bindtap="starBook">{{cancel}}{{cancelStar}}收藏</button>
+  </view>
+</view>
+

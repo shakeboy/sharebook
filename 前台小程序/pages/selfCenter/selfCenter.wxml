@@ -1,0 +1,40 @@
+<view class="selfCenter">
+<!-- 注册人基本信息 -->
+<!-- 头像+id+个人简介+账号密码+最爱看的书籍 -->
+  <view class="basicInfo">
+    <view class="img">
+      <image id="img" wx:if="{{avator}}" src="{{avator}}" bindtap="goToSetting"></image>
+    </view>
+    <view class="infoText">
+      <view class="weather" style="display:flex;flex-direction:row;">省份:<input bindinput="getProvince"/>城市:<input bindinput="getCity"/>区级:<input bindinput="getQu"/></view>
+      <view class="infoId">
+        <view id="infoId" bindtap="goToSetting">{{username}}</view> 
+        <view  bindtap="toggleDialog" style="font-size:20rpx;margin-left:70px;margin-top:4px">近两日天气</view>
+      </view>
+      <view id="infoSig" bindtap="goToWriteSignature">个性签名：{{userInfo.userSignature}}</view>
+    </view>
+  </view>
+<!-- 个人操作功能 -->
+  <view class="gongneng">
+    <!-- 写文章 -->
+    <view class="write" hover-class="gongnengHover" bindtap="goToWriteBook">写文章</view>
+    <view class="star" hover-class="gongnengHover" bindtap="goToBookStar">收藏区</view>
+    <view class="friend" hover-class="gongnengHover" bindtap="goToGoodFriend">好友列表</view>
+    <view class="jingdian" hover-class="gongnengHover" bindtap="goToBookKing">经典研读</view>
+    <view class="kewai" hover-class="gongnengHover" bindtap="goToHistoryPhoto">历史图片</view>
+    <view class="setting" bindtap="goToSetting" hover-class="gongnengHover">设置</view>
+  </view>
+</view>
+
+<scroll-view class="dialog {{ showDialog ? 'show' : '' }}" scroll-y>
+  <!-- 如果想点击弹窗外不隐藏，取消bindtap点击事件即可 -->
+  <view class="dialog_mask" bindtap="toggleDialog"/>
+  <view class="dialog_container">
+    <view style='padding:100rpx;' wx:for='{{test}}' wx:key="index">
+      <view>白天天气：{{item.day_weather}}=白天风向:{{item.day_wind_direction}}=风力：{{item.day_wind_power}}</view>
+      <view>晚上天气：{{item.night_weather}}=晚上风向{{item.night_wind_direction}}=风力：{{item.night_wind_power}}</view>
+      温度：===最低温度{{item.min_degree}}===最高温度{{item.max_degree}}
+      时间{{item.time}}
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,26 @@
+<input type="button" value="{{close_open}}" bindtap="handleRequest" disabled="disabled"
+  style="height:20px;margin-left:250px;background-color:yellow;border-radius:10px;float:right" />
+<view>
+  聊天功能websocket待开发
+</view>
+
+<!-- // 类比弹窗渲染请求加好友信息 -->
+<scroll-view scroll-y="true" class="{{isShow}}show requestList" wx:for="{{personWhoRequest}}" wx:key="index"
+  wx:item="item">
+  <view class="person">
+    <view class="avator">
+      <image id="avator" src="{{item.userAvator}}">
+      </image>
+    </view>
+    <view class="message">
+      <view id="person">{{item.userName}}</view>
+      <view id="message">请求加好友</view>
+    </view>
+    <view style="display:flex;flex-direction:row">
+      <input style="margin-top:12px;margin-left:60px;background-color:red;border-radius:10px" type="button" value="同意" bindtap="response" data-response="yes" data-user_ido="{{item.userId}}"
+        disabled="disabled" />
+      <input style="margin-top:12px;margin-left:30px;background-color:red;border-radius:10px" type="button" value="拒绝" bindtap="response" data-response="no" data-user_ido="{{item.userId}}"
+        disabled="disabled" />
+    </view>
+  </view>
+</scroll-view>
